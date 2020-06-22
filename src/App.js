@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Homepage from './pages/home-page/Homepage';
 import Shop from './pages/shop/Shop';
 import Header from './components/header/Header';
@@ -10,10 +10,6 @@ import { connect } from 'react-redux';
 import { setCurrentUser } from './redux/user/userActions';
 
 class App extends Component {
-  state = {
-    currentUser: null,
-  };
-
   unsubscribeFromAuth = null;
 
   componentDidMount() {
@@ -46,11 +42,24 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Homepage} />
           <Route path="/shop" component={Shop} />
-          <Route path="/signin" component={SignInAndSignOut} />
+          <Route
+            path="/signin"
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to="/" />
+              ) : (
+                <SignInAndSignOut />
+              )
+            }
+          />
         </Switch>
       </div>
     );
   }
 }
 
-export default connect(null, { setCurrentUser })(App);
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
+
+export default connect(mapStateToProps, { setCurrentUser })(App);

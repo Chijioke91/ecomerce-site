@@ -1,4 +1,4 @@
-const { SET_CURRENT_USER } = require('./constants');
+const { SET_CURRENT_USER } = require('./userActionTypes');
 
 const init_state = {
   currentUser: null,
