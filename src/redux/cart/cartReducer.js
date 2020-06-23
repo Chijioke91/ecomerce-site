@@ -1,7 +1,9 @@
-import { TOGGLE_CARD_HIDDEN } from './cartActionTypes';
+import { TOGGLE_CARD_HIDDEN, ADD_ITEM } from './cartActionTypes';
+import { addItemToCart } from './cart.utils';
 
 const init_state = {
   hidden: true,
+  cartItems: [],
 };
 
 export default (state = init_state, { type, payload }) => {
@@ -10,6 +12,12 @@ export default (state = init_state, { type, payload }) => {
       return {
         ...state,
         hidden: !state.hidden,
+      };
+
+    case ADD_ITEM:
+      return {
+        ...state,
+        cartItems: addItemToCart(state.cartItems, payload),
       };
 
     default:
