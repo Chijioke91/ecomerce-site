@@ -9,6 +9,10 @@ import {
 } from './CollectionPageStyles';
 
 const Collection = ({ collection }) => {
+  // if (collection === null) {
+  //   return <div>Loading...</div>;
+  // }
+
   const { title, items } = collection;
   return (
     <CollectionPageContainer>
