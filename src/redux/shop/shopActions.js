@@ -3,12 +3,8 @@ import {
   FETCH_COLLECTIONS_FAIL,
   FETCH_COLLECTIONS_SUCCESS,
 } from './shopTypes';
-import {
-  firestore,
-  convertCollectionsSnapshotsToMap,
-} from '../../firebase/firebase.utils';
 
-export const fetchCollectionStart = () => {
+export const fetchCollectionsStart = () => {
   return {
     type: FETCH_COLLECTIONS_START,
   };
@@ -28,18 +24,18 @@ export const fetchCollectionFail = (errMsg) => {
   };
 };
 
-export const fetchCollectionsStartAsync = () => async (dispatch) => {
-  const collectionRef = firestore.collection('collections');
+// export const fetchCollectionsStartAsync = () => async (dispatch) => {
+//   const collectionRef = firestore.collection('collections');
 
-  try {
-    dispatch(fetchCollectionStart());
+//   try {
+//     dispatch(fetchCollectionsStart());
 
-    const snapshot = await collectionRef.get();
+//     const snapshot = await collectionRef.get();
 
-    const collectionsMap = convertCollectionsSnapshotsToMap(snapshot);
+//     const collectionsMap = convertCollectionsSnapshotsToMap(snapshot);
 
-    dispatch(fetchCollectionSuccess(collectionsMap));
-  } catch (e) {
-    dispatch(fetchCollectionFail(e.message));
-  }
-};
+//     dispatch(fetchCollectionSuccess(collectionsMap));
+//   } catch (e) {
+//     dispatch(fetchCollectionFail(e.message));
+//   }
+// };
