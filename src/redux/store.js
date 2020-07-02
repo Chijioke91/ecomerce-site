@@ -3,7 +3,7 @@ import { persistStore } from 'redux-persist';
 import reducers from '../redux/rootReducer';
 import createSagaMiddleware from 'redux-saga';
 import { compose, applyMiddleware } from 'redux';
-import { fetchCollectionsStart } from './shop/shopSagas';
+import rootSaga from './rootSaga';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -16,6 +16,6 @@ export const store = createStore(
   composeEnhancers(applyMiddleware(...middlewares))
 );
 
-sagaMiddleware.run(fetchCollectionsStart);
+sagaMiddleware.run(rootSaga);
 
 export const persistor = persistStore(store);

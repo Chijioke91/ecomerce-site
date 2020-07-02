@@ -23,19 +23,3 @@ export const fetchCollectionFail = (errMsg) => {
     payload: errMsg,
   };
 };
-
-// export const fetchCollectionsStartAsync = () => async (dispatch) => {
-//   const collectionRef = firestore.collection('collections');
-
-//   try {
-//     dispatch(fetchCollectionsStart());
-
-//     const snapshot = await collectionRef.get();
-
-//     const collectionsMap = convertCollectionsSnapshotsToMap(snapshot);
-
-//     dispatch(fetchCollectionSuccess(collectionsMap));
-//   } catch (e) {
-//     dispatch(fetchCollectionFail(e.message));
-//   }
-// };

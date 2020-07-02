@@ -3,6 +3,7 @@ import {
   ADD_ITEM,
   CLEAR_ITEM_FROM_CART,
   REMOVE_ITEM,
+  CLEAR_CART,
 } from './cartActionTypes';
 
 export const toggleCartHidden = () => {
@@ -31,3 +32,7 @@ export const removeItem = (item) => {
     payload: item,
   };
 };
+
+export const clearCart = () => ({
+  type: CLEAR_CART,
+});
