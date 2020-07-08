@@ -6,7 +6,7 @@ const StripeCheckoutButton = ({ price }) => {
   const stripePrice = price * 100;
   const stripePubKey = 'pk_test_OcZv4dvP5hENXGAE8gl41NIN0074zV7071';
 
-  const onToken = async (token) => {
+  const onToken = (token) => {
     axios({
       url: '/payment',
       method: 'post',

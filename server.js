@@ -38,7 +38,6 @@ app.post('/payment', (req, res) => {
       res.status(500).send({ error: err.message });
     } else {
       res.status(200).json({ success: charge });
-      console.log(charge);
     }
   });
 });
